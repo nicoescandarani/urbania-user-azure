@@ -1,0 +1,8 @@
+# DO NOT include azure-functions-worker in this file
+# The Python Worker is managed by Azure Functions platform
+# Manually managing azure-functions-worker may cause unexpected issues
+
+azure-functions
+azure-identity # Permite autenticar a la API con la cuenta de Azure y tener acceso al servidor.
+azure-keyvault-secrets # Permite trabajar manipulando secretos del Keyvault.
+email-validator

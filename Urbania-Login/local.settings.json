@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "keyVaultURL": "https://kv-urbania.vault.azure.net/",
+    "clientId": "94fb1055-0d83-4c39-b88f-40eea84fbbed",
+    "tenantId": "ca1d08b0-9543-4bd9-8718-42becddc7786",
+    "clientSecret": "PYDN.A.RPEZ33_F9Q4F7i_0-oxmL5EtIE_"
+  }
+}

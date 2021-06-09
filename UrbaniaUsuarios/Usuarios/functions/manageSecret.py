@@ -17,25 +17,24 @@ def searchSecret(client, secretPartialName):
             break
     return secretName
 
-def processRequest(*args): # Argumentos: args[0] => accion | args[1] => user | args[2] => password | args[3] => email
+def processRequest(*args): # Argumentos: args[0] => user | args[1] => password | args[2] => email
     process = False
     try:
         client = getClient("ManagedIdentity")
-        vaultSecret = searchSecret(client, args[1])
+        vaultSecret = searchSecret(client, args[0])
     except:
         client = getClient("LocalCreds")
-        vaultSecret = searchSecret(client, args[1])
+        vaultSecret = searchSecret(client, args[0])
 
     if (vaultSecret != ""): # Si se encontró un secreto con ese nombre de Usuario entra.
-        if (args[0] == "borrarusuario"):
+        if (len(args) == 2):
             secreto = client.get_secret(vaultSecret)
-            if (args[2].lower() == secreto.value.lower()):
+            if (args[1].lower() == secreto.value.lower()):
                 client.begin_delete_secret(vaultSecret).result() # Borra el usuario.
                 process = True
     else:
-        if (args[0] == "crearusuario"):
-            sendMail(args[1], args[2], args[3])
-            createSecret(client, args[1], args[2]) # Crea un secreto en caso que no se encuentre uno con igual nombre de usuario.
-           
+        if (len(args) == 3):
+            sendMail(args[0], args[1], args[2])
+            createSecret(client, args[0], args[1]) # Crea un secreto en caso que no se encuentre uno con igual nombre de usuario.
             process = True
     return process

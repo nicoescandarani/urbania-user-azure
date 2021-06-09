@@ -20,15 +20,15 @@ def validateUserName(user):
                 valido = True
     return valido
 
-def validateInput(*args): # Argumentos: args[0] => user | args[1] => password | args[2] => accion | args[3] => email
+def validateInput(*args): # Argumentos: args[0] => user | args[1] => password | args[2] => email
     esValido = False
-    if (len(args) == 3):
+    if (len(args) == 2):
         if (validateUserName(args[0])):
-            if (args[1] != "" and args[2] == 'crearusuario' or args[2] == 'borrarusuario'):
+            if (args[1] != ""):
                 esValido = True
-    elif (len(args) == 4):
-        if (validateUserName(args[0]) and validateEmail(args[3])):
-            if (args[1] != "" and args[2] == 'crearusuario' or args[2] == 'borrarusuario'):
+    elif (len(args) == 3):
+        if (validateUserName(args[0]) and validateEmail(args[2])):
+            if (args[1] != ""):
                 esValido = True
 
     return esValido

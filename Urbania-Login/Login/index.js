@@ -10,11 +10,12 @@ module.exports = async function (context, req) {
        if (proceso){
             respuesta = {status: 200, body: {result: "Success"}}
         } else {
-            respuesta = {status: 403, body: {result: "Usuario o contraseña incorrectos."}}
+            respuesta = {status: 401, body: {result: "Usuario o contraseña incorrectos."}}
         }
     } else {
-        respuesta = {status: 423, body: {result: "No se ingresaron los datos requeridos."}}
+        respuesta = {status: 400, body: {result: "No se ingresaron los datos requeridos."}}
     }
     context.res = respuesta    
     context.done();
+    
 }
